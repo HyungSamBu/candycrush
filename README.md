@@ -1,4 +1,4 @@
-# Incentives-Based Cady Dispenser
+# Incentives-Based Candy Dispenser
 
 This is the source code of a machine to dispense candy when you have earned it.
 
@@ -22,10 +22,11 @@ This system is intended to run in a Raspbian environment.
 
 ## How to get candy
 
-* Start your first Toggl before 9:05
+* Start your first Toggl before 8:35
 * Respond to e-mails within 10 working hours
 * Toggl 1 hour work time
 * Your lunch break starts 11:20-12:45 and is 30-80 minutes long
+* Have five Toggld hours at 15:00
 
 ## License
 
