@@ -21,6 +21,11 @@ This is the source code of a machine to dispense candy when you have earned it.
 
 This system is intended to run in a Raspbian environment.
 
+## Install
+
+    sudo apt install git python-pip
+	pip install -r requirements.txt
+
 ## How to get candy
 
 * Start your first Toggl before 8:35
