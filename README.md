@@ -7,6 +7,7 @@ This is the source code of a machine to dispense candy when you have earned it.
 * Dispenses candy
 * Toggl
 * IMAP
+* Facebook, Reddit
 
 ## Hardware Requirements
 
@@ -24,7 +25,7 @@ This system is intended to run in a Raspbian environment.
 
 * Start your first Toggl before 8:35
 * Respond to e-mails within 10 working hours
-* Toggl 1 hour work time
+* Toggl 1 hour work time with no Facebook or Reddit activity
 * Your lunch break starts 11:20-12:45 and is 30-80 minutes long
 * Have five Toggld hours at 15:00
 
