@@ -10,14 +10,14 @@ def scaler(OldMin, OldMax, NewMin, NewMax):
 
 def setup_servod():
     if not os.path.exists("/dev/servoblaster"):
-        subprocess.call(["servod"])
+        subprocess.call(["servod", "--idle-timeout=1000ms"])
     
 
 def set_servo(physical_pin, degrees):
-    servodegrees = scaler(0, 180, 53, 240)
+    servodegrees = scaler(0, 180, 530, 2400)
     with open("/dev/servoblaster", "w") as f:
         servovalue = int(servodegrees(degrees))
-        f.write("P1-{}={}\n".format(physical_pin, servovalue))
+        f.write("P1-{}={}us\n".format(physical_pin, servovalue))
 
 def main():
     set_servo(11, 0)
