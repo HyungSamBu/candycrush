@@ -23,7 +23,13 @@ This system is intended to run in a Raspbian environment.
 
 ## Install
 
-    sudo apt install git python-pip
+    sudo apt install git python-pip python-setuptools python-dev python-rpi.gpio
+	git clone https://github.com/richardghirst/PiBits.git
+	cd PiBits/ServoBlaster/user/
+	make servod
+	sudo cp servod /usr/local/sbin/
+	sudo chown root:root /usr/local/sbin/servod
+	sudo chmod u+s /usr/local/sbin/servod
 	pip install -r requirements.txt
 
 ## How to get candy
