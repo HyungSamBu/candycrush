@@ -17,7 +17,7 @@ def set_servo(physical_pin, degrees):
     servodegrees = scaler(0, 180, 53, 240)
     with open("/dev/servoblaster", "w") as f:
         servovalue = int(servodegrees(degrees))
-        f.write("P1-{}={}".format(physical_pin, servovalue))
+        f.write("P1-{}={}\n".format(physical_pin, servovalue))
 
 def main():
     set_servo(11, 0)
