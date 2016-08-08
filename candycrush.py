@@ -20,6 +20,7 @@ def set_servo(physical_pin, degrees):
         f.write("P1-{}={}us\n".format(physical_pin, servovalue))
 
 def main():
+    setup_servod()
     set_servo(11, 0)
     time.sleep(2)
     set_servo(11, 180)
