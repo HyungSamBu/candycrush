@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "$WORKON_HOME/candies/bin/python" "candycrush.py" "$@"

@@ -1,10 +1,3 @@
-#!$WORKON_HOME/candies/bin/python
-
-# Setup virtualenv
-#import os
-#activate_this = os.environ['WORKON_HOME'] + '/candies/bin/activate_this.py'
-#execfile(activate_this, dict(__file__=activate_this))
-
 import time
 from Servo import Servo
 from Utils import configfile
