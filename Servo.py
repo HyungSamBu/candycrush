@@ -9,7 +9,7 @@ class Servo:
         self.physical_pin = physical_pin
         self.servo_speed_180 = servo_speed_180
         self.servodegrees = scaler(0, 180, duty_min, duty_max)
-        self.position = 0                
+        self.position = 0
         
     def setup_servod(self):
         if not os.path.exists("/dev/servoblaster"):
@@ -34,11 +34,9 @@ class Servo:
         
     def _set_position_slowly(self, degrees, total_time):
         travel_degrees = abs(self.position - degrees)
-        if travel_degrees == 0:
-            return
         total_travel_time = travel_degrees / 180.0 * self.servo_speed_180
         total_sleep_time = total_time - total_travel_time
-        if total_sleep_time <= 0:
+        if total_sleep_time <= 0 or travel_degrees == 0:
             self._set_position(degrees)
             return
         tick_sleep_time = float(total_sleep_time) / travel_degrees
