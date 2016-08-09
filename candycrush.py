@@ -13,6 +13,7 @@ def scaler(OldMin, OldMax, NewMin, NewMax):
 def configfile(config_path):
     config = ConfigParser.ConfigParser()
     config.read(config_path)
+    return config
 
 class CandyCrush:
     def __init__(self, config):
