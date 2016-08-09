@@ -39,12 +39,12 @@ class CandyCrush:
 
     def dispense_candy(self):
         self.set_servo(180)
-        time.sleep(0.5)
+        time.sleep(1)
         for i in range(45):
             self.set_servo(180-i)
-            time.sleep(0.05)
+            time.sleep(0.1)
         self.set_servo(0)
-        time.sleep(0.5)
+        time.sleep(1)
         self.set_servo(180)
             
     # Run!
@@ -56,8 +56,6 @@ class CandyCrush:
         self.set_servo(90)
         time.sleep(2)
         self.set_servo(45)
-        time.sleep(2)
-        self.set_servo(30)
         time.sleep(2)
         self.dispense_candy()
 
