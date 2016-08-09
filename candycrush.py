@@ -30,14 +30,22 @@ class CandyCrush:
     # Servo control
     def setup_servod(self):
         if not os.path.exists("/dev/servoblaster"):
-            subprocess.call(["servod", "--idle-timeout=1000ms"])
+            subprocess.call(["servod", "--idle-timeout=2500ms"])
 
     def set_servo(self, degrees):
         with open("/dev/servoblaster", "w") as f:
             servovalue = int(self.servodegrees(degrees))
             f.write("P1-{}={}us\n".format(self.physical_pin, servovalue))
 
-    def dispense_candy(self,)
+    def dispense_candy(self):
+        self.set_servo(180)
+        time.sleep(0.5)
+        for i in range(45):
+            self.set_servo(180-i)
+            time.sleep(0.05)
+        self.set_servo(0)
+        time.sleep(0.5)
+        self.set_servo(180)
             
     # Run!
     def main(self):
@@ -50,6 +58,8 @@ class CandyCrush:
         self.set_servo(45)
         time.sleep(2)
         self.set_servo(30)
+        time.sleep(2)
+        self.dispense_candy()
 
 if  __name__ =='__main__':
     config = configfile('config')
