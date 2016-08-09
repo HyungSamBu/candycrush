@@ -3,6 +3,7 @@ import ConfigParser
 import os.path
 import subprocess
 import time
+from tapioca_toggl import Toggl
 
 def scaler(OldMin, OldMax, NewMin, NewMax):
     def fn(OldValue):
@@ -18,7 +19,8 @@ class CandyCrush:
 
     # External APIs
     def setup_apis(self, config):
-        self.toggl_token = config.get('API Tokens', 'toggl')
+        toggl_token = config.get('API Tokens', 'toggl')
+        self.toggl = Toggl(access_token=toggl_token)
 
     # Servo control
     def setup_servod(self):
