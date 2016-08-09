@@ -20,6 +20,7 @@ class CandyCrush:
         self.setup_apis(config)
         self.physical_pin = config.getint('Other', 'physical_pin')
         self.servodegrees = scaler(0, 180, 530, 2400)
+        self.servo_last = 0
         self.setup_servod()
 
     # External APIs
@@ -36,13 +37,16 @@ class CandyCrush:
         with open("/dev/servoblaster", "w") as f:
             servovalue = int(self.servodegrees(degrees))
             f.write("P1-{}={}us\n".format(self.physical_pin, servovalue))
+        travel_time = abs(self.servo_last - degrees) / 180.0 * 0.3
+        self.servo_last = degrees
+        time.sleep(travel_time)
 
     def dispense_candy(self):
         self.set_servo(180)
         time.sleep(1)
         for i in range(45):
             self.set_servo(180-i)
-            time.sleep(0.1)
+            time.sleep(0.05)
         self.set_servo(0)
         time.sleep(1)
         self.set_servo(180)
