@@ -45,7 +45,7 @@ This system is intended to run in a Raspbian environment.
 
 ## License
 
-candycrush - Incentives-based candy cispenser
+candycrush - Incentives-based candy dispenser
 
 Copyright (C) 2016  Emil Vikström
 
