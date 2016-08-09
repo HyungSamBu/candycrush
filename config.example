@@ -1,5 +1,6 @@
 [API Tokens]
 toggl=thequickbrownfox
 
-[Other]
+[Servo]
 physical_pin=11
+speed_180=0.3

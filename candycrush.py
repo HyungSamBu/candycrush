@@ -18,7 +18,8 @@ def configfile(config_path):
 class CandyCrush:
     def __init__(self, config):
         self.setup_apis(config)
-        self.physical_pin = config.getint('Other', 'physical_pin')
+        self.physical_pin = config.getint('Servo', 'physical_pin')
+        self.servo_speed_180 = config.getfloat('Servo', 'speed_180')
         self.servodegrees = scaler(0, 180, 530, 2400)
         self.servo_last = 0
         self.setup_servod()
@@ -37,7 +38,7 @@ class CandyCrush:
         with open("/dev/servoblaster", "w") as f:
             servovalue = int(self.servodegrees(degrees))
             f.write("P1-{}={}us\n".format(self.physical_pin, servovalue))
-        travel_time = abs(self.servo_last - degrees) / 180.0 * 0.3
+        travel_time = abs(self.servo_last - degrees) / 180.0 * self.servo_speed_180
         self.servo_last = degrees
         time.sleep(travel_time)
 
