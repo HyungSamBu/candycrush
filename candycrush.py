@@ -38,30 +38,37 @@ class CandyCrush:
         with open("/dev/servoblaster", "w") as f:
             servovalue = int(self.servodegrees(degrees))
             f.write("P1-{}={}us\n".format(self.physical_pin, servovalue))
+
+        # Block during travel
         travel_time = abs(self.servo_last - degrees) / 180.0 * self.servo_speed_180
         self.servo_last = degrees
         time.sleep(travel_time)
 
+    def set_servo_slow(self, degrees, total_time):
+        travel_degrees = abs(self.servo_last - degrees)
+        total_travel_time = travel_degrees / 180.0 * self.servo_speed_180
+        total_sleep_time = total_time - total_travel_time
+        if total_sleep_time <= 0:
+            self.set_servo(degrees)
+            return
+        tick_sleep_time = float(total_sleep_time) / travel_degrees
+        step = 1 if self.servo_last < degrees else -1
+        for d in range(self.servo_last, degrees + step, step):
+            self.set_servo(d)
+            time.sleep(tick_sleep_time)
+
     def dispense_candy(self):
         self.set_servo(180)
         time.sleep(1)
-        for i in range(45):
-            self.set_servo(180-i)
-            time.sleep(0.05)
+        self.set_servo_slow(180-55, 2.0)
+        time.sleep(1)
         self.set_servo(0)
         time.sleep(1)
         self.set_servo(180)
             
     # Run!
     def main(self):
-        self.set_servo(0)
-        time.sleep(2)
         self.set_servo(180)
-        time.sleep(2)
-        self.set_servo(90)
-        time.sleep(2)
-        self.set_servo(45)
-        time.sleep(2)
         self.dispense_candy()
 
 if  __name__ =='__main__':
