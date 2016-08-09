@@ -9,7 +9,6 @@ class CandyCrush:
         self.config = config
         self.setup_servo(config)
         self.setup_apis(config)
-        self.setup_servo_vars(config)
 
     # External APIs
     def setup_apis(self, config):
