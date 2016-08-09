@@ -26,16 +26,16 @@ class CandyCrush:
     def dispense_candy(self):
         servo = self.servo
         if not servo.position == 180:
-            servo.set_servo(180)
+            servo.set_position(180)
             time.sleep(1)
-        servo.set_servo_slowly(90, 1.5)
-        servo.set_servo_slowly(0, 0.5)
+        servo.set_position(90, 1.5)
+        servo.set_position(0, 0.5)
         time.sleep(1)
-        servo.set_servo_slowly(180, 1.5)
+        servo.set_position(180, 1.5)
             
     # Run!
     def main(self):
-        self.servo.set_servo(180)
+        self.servo.set_position(180)
         self.dispense_candy()
 
 if  __name__ =='__main__':
