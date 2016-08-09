@@ -16,7 +16,7 @@ class Servo:
             subprocess.call(["servod", "--idle-timeout=2500ms"])
 
     def set_position(self, degrees, time = None):
-        if time is not None:
+        if time is None:
             return self._set_position(degrees)
         else:
             return self._set_position_slowly(degrees, time)
