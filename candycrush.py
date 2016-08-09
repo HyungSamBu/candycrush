@@ -2,17 +2,8 @@
 import ConfigParser
 import time
 from Servo import Servo
+from Utils import configfile
 from tapioca_toggl import Toggl
-
-def scaler(OldMin, OldMax, NewMin, NewMax):
-    def fn(OldValue):
-        return (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
-    return fn
-
-def configfile(config_path):
-    config = ConfigParser.ConfigParser()
-    config.read(config_path)
-    return config
 
 class CandyCrush:
     def __init__(self, config):

@@ -1,6 +1,7 @@
 import os.path
 import subprocess
 import time
+from Utils import scaler
 
 class Servo:
     def __init__(self, physical_pin, servo_speed_180, duty_min, duty_max):
