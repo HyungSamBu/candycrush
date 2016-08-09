@@ -10,6 +10,9 @@ def scaler(OldMin, OldMax, NewMin, NewMax):
         return (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
     return fn
 
+def configfile(config_path):
+    config = ConfigParser.ConfigParser()
+    config.read(config_path)
 
 class CandyCrush:
     def __init__(self, config):
@@ -45,7 +48,6 @@ class CandyCrush:
         self.set_servo(11, 30)
 
 if  __name__ =='__main__':
-    config = ConfigParser.ConfigParser()
-    config.read('config')
+    config = configfile('config')
     cc = CandyCrush(config)
     cc.main()
