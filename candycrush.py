@@ -58,10 +58,10 @@ class CandyCrush:
             time.sleep(tick_sleep_time)
 
     def dispense_candy(self):
-        self.set_servo(180)
-        time.sleep(1)
+        if not self.servo_last == 180:
+            self.set_servo(180)
+            time.sleep(1)
         self.set_servo_slow(180-55, 2.0)
-        time.sleep(1)
         self.set_servo(0)
         time.sleep(1)
         self.set_servo(180)
