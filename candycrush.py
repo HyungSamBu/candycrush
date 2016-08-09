@@ -70,10 +70,9 @@ class CandyCrush:
         if not self.servo_last == 180:
             self.set_servo(180)
             time.sleep(1)
-        self.set_servo_slowly(180-55, 2.0)
-        self.set_servo(0)
+        self.set_servo_slowly(0, 3.0)
         time.sleep(1)
-        self.set_servo(180)
+        self.set_servo_slowly(180, 1.5)
             
     # Run!
     def main(self):
