@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import ConfigParser
 import os.path
 import subprocess
 import time
@@ -10,9 +11,14 @@ def scaler(OldMin, OldMax, NewMin, NewMax):
 
 
 class CandyCrush:
-    def __init__(self):
+    def __init__(self, config):
+        self.setup_apis(config)
         self.servodegrees = scaler(0, 180, 530, 2400)
         self.setup_servod()
+
+    # External APIs
+    def setup_apis(self, config):
+        self.toggl_token = config.get('API Tokens', 'toggl')
 
     # Servo control
     def setup_servod(self):
@@ -37,5 +43,7 @@ class CandyCrush:
         self.set_servo(11, 30)
 
 if  __name__ =='__main__':
-    cc = CandyCrush()
+    config = ConfigParser.ConfigParser()
+    config.read('config')
+    cc = CandyCrush(config)
     cc.main()
