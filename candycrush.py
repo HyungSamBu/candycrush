@@ -18,6 +18,7 @@ def configfile(config_path):
 class CandyCrush:
     def __init__(self, config):
         self.setup_apis(config)
+        self.physical_pin = config.getint('Other', 'physical_pin')
         self.servodegrees = scaler(0, 180, 530, 2400)
         self.setup_servod()
 
@@ -31,22 +32,24 @@ class CandyCrush:
         if not os.path.exists("/dev/servoblaster"):
             subprocess.call(["servod", "--idle-timeout=1000ms"])
 
-    def set_servo(self, physical_pin, degrees):
+    def set_servo(self, degrees):
         with open("/dev/servoblaster", "w") as f:
             servovalue = int(self.servodegrees(degrees))
-            f.write("P1-{}={}us\n".format(physical_pin, servovalue))
+            f.write("P1-{}={}us\n".format(self.physical_pin, servovalue))
 
+    def dispense_candy(self,)
+            
     # Run!
     def main(self):
-        self.set_servo(11, 0)
+        self.set_servo(0)
         time.sleep(2)
-        self.set_servo(11, 180)
+        self.set_servo(180)
         time.sleep(2)
-        self.set_servo(11, 90)
+        self.set_servo(90)
         time.sleep(2)
-        self.set_servo(11, 45)
+        self.set_servo(45)
         time.sleep(2)
-        self.set_servo(11, 30)
+        self.set_servo(30)
 
 if  __name__ =='__main__':
     config = configfile('config')

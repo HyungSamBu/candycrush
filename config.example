@@ -1,2 +1,5 @@
 [API Tokens]
 toggl=thequickbrownfox
+
+[Other]
+physical_pin=11
