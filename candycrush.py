@@ -17,11 +17,9 @@ def configfile(config_path):
 
 class CandyCrush:
     def __init__(self, config):
+        self.config = config
         self.setup_apis(config)
-        self.physical_pin = config.getint('Servo', 'physical_pin')
-        self.servo_speed_180 = config.getfloat('Servo', 'speed_180')
-        self.servodegrees = scaler(0, 180, 530, 2400)
-        self.servo_last = 0
+        self.setup_servo_vars(config)
         self.setup_servod()
 
     # External APIs
@@ -30,6 +28,17 @@ class CandyCrush:
         self.toggl = Toggl(access_token=toggl_token)
 
     # Servo control
+    def setup_servo_vars(self, config):
+        self.physical_pin = config.getint('Servo', 'physical_pin')
+        self.servo_speed_180 = config.getfloat('Servo', 'speed_180')
+        self.servodegrees = scaler(
+            0,
+            180,
+            config.getfloat('Servo', 'duty_min'),
+            config.getfloat('Servo', 'duty_max')
+        )
+        self.servo_last = 0        
+    
     def setup_servod(self):
         if not os.path.exists("/dev/servoblaster"):
             subprocess.call(["servod", "--idle-timeout=2500ms"])
@@ -44,7 +53,7 @@ class CandyCrush:
         self.servo_last = degrees
         time.sleep(travel_time)
 
-    def set_servo_slow(self, degrees, total_time):
+    def set_servo_slowly(self, degrees, total_time):
         travel_degrees = abs(self.servo_last - degrees)
         total_travel_time = travel_degrees / 180.0 * self.servo_speed_180
         total_sleep_time = total_time - total_travel_time
@@ -61,7 +70,7 @@ class CandyCrush:
         if not self.servo_last == 180:
             self.set_servo(180)
             time.sleep(1)
-        self.set_servo_slow(180-55, 2.0)
+        self.set_servo_slowly(180-55, 2.0)
         self.set_servo(0)
         time.sleep(1)
         self.set_servo(180)

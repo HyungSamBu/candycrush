@@ -3,4 +3,6 @@ toggl=thequickbrownfox
 
 [Servo]
 physical_pin=11
+duty_min=530
+duty_max=2400
 speed_180=0.3
