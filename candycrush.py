@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import ConfigParser
 import time
 from Servo import Servo
 from Utils import configfile

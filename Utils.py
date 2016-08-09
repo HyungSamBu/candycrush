@@ -1,3 +1,5 @@
+import ConfigParser
+
 def scaler(OldMin, OldMax, NewMin, NewMax):
     def fn(OldValue):
         return (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
