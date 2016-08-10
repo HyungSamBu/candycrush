@@ -1,2 +1,2 @@
 #!/bin/sh
-exec "$WORKON_HOME/candies/bin/python" "candycrush.py" "$@"
+exec "$HOME/.virtualenvs/candies/bin/python" "candycrush.py" "$@"
