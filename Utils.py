@@ -6,6 +6,6 @@ def scaler(OldMin, OldMax, NewMin, NewMax):
     return fn
 
 def configfile(config_path):
-    config = ConfigParser.ConfigParser()
+    config = ConfigParser.ConfigParser(allow_no_value = True)
     config.read(config_path)
     return config

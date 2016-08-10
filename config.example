@@ -5,4 +5,6 @@ toggl=thequickbrownfox
 physical_pin=11
 duty_min=530
 duty_max=2400
+# Time in seconds to go 180 degrees. You usally get better timing if
+# you overshoot this slightly.
 speed_180=0.3
