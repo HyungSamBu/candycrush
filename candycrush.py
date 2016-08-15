@@ -41,7 +41,7 @@ class CandyCrush:
 if  __name__ =='__main__':
     ap = argparse.ArgumentParser('Dispense candy')
     ap.add_argument('--config', type=str, default='config', help='path to configuration file')
-    args = ap.parse_args
+    args = ap.parse_args()
     config = configfile(args.config)
     cc = CandyCrush(config)
     cc.main()
